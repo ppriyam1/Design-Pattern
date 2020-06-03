@@ -46,10 +46,10 @@
 
 <target name="run" depends="jar">
         <java jar="${BUILD}/jar/wordPlay.jar"  fork="true">
-	<arg value="${input}"/> <!-- input file -->
-	<arg value="${output}"/> <!-- output file -->
-        <arg value="${metrics}"/> <!-- metrics file -->
-        </java>	
+	<arg value="${input.txt}"/> <!-- input file -->
+	<arg value="${output.txt}"/> <!-- output file -->
+        <arg value="${metrics.txt}"/> <!-- metrics file -->
+        </java>
     </target>
 
 </project>
