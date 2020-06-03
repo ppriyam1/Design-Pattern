@@ -19,5 +19,27 @@ public class Driver {
 			System.exit(0);
 		}
 		System.out.println("Hello World! Lets get started with the assignment");
+		FileProcessor fp = null;
+		try{
+			fp = new FileProcessor(args[0]);
+			String sr = fp.poll();
+			int counter = 0; // Poll is a linkedlist that returns each word from the file
+			//int i = counter;
+			while(sr != null){ // To loop around each sentence in the file
+				char [] ch = sr. toCharArray();
+				//if(ch[i] != '.'){
+					for(int i = counter ; i < ch.length; i++){
+						System.out.println(ch[i]);
+					}
+					sr = fp.poll();
+				//}
+			}
+		}
+		catch(Exception FileNotFoundException){
+			System.out.println("FileNotFound");
+			System.exit(0);
+		}
+		//System.out.println(fp.poll());
+
 	}
 }
