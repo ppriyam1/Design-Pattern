@@ -22,19 +22,19 @@ public class Driver {
 		FileProcessor fp = null;
 		try{
 			fp = new FileProcessor(args[0]);
-			String sr = fp.poll();
-			int counter = 0; // Poll is a linkedlist that returns each word from the file
-			//int i = counter;
-			while(sr != null){ // To loop around each sentence in the file
-				char [] ch = sr. toCharArray();
-				//if(ch[i] != '.'){
-					for(int i = counter ; i < ch.length; i++){
-						System.out.println(ch[i]);
-					}
-					sr = fp.poll();
-				//}
+		  String sr = fp.poll();// Poll is a linkedlist that returns each word from the file
+			int counter = 0;
+		  while(sr != null){ // To loop around each sentence in the file
+				char [] ch = sr. toCharArray(); // to store characters in an array
+				counter++;
+				String result = "";
+					result += sr.substring(ch.length-counter);
+					result += sr.substring(0, ch.length-counter);
+				System.out.println(result);
+				sr = fp.poll();
+
 			}
-		}
+			}
 		catch(Exception FileNotFoundException){
 			System.out.println("FileNotFound");
 			System.exit(0);
