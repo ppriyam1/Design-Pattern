@@ -4,7 +4,6 @@ import wordPlay.util.FileProcessor;
 
 /**
  * @author Preeti Priyam
- *
  */
 public class Driver {
 	public static void main(String[] args) {
@@ -19,27 +18,54 @@ public class Driver {
 			System.exit(0);
 		}
 		System.out.println("Hello World! Lets get started with the assignment");
-		FileProcessor fp = null;
+		FileProcessor fileprocessor = null;
+		String line = "";
 		try{
-			fp = new FileProcessor(args[0]);
-		  String sr = fp.poll();// Poll is a linkedlist that returns each word from the file
+			fileprocessor = new FileProcessor(args[0]);
+		  String sr = fileprocessor.poll();// Poll is a linkedlist that returns each word from the file
 			int counter = 0;
-		  while(sr != null){ // To loop around each sentence in the file
-				char [] ch = sr. toCharArray(); // to store characters in an array
+			boolean gotPeriod=false;
+			while(sr != null){
+				char [] ch = sr.toCharArray();
 				counter++;
-				String result = "";
-					result += sr.substring(ch.length-counter);
-					result += sr.substring(0, ch.length-counter);
-				System.out.println(result);
-				sr = fp.poll();
+				if(ch[ch.length-1] == '.')
+				{
+					counter++; //to take "." in consideration
+					gotPeriod=true;
+				}
+			int end = ch.length - counter;
 
+			if(end < 0){
+				end++;
+			}
+
+			String s2="",s1="";
+			for(int i = 0; i <= end-1; i++){
+				if(ch[i] !=  '.'){
+				s1 += ch[i];
 			}
 			}
+			for(int j = end; j <= ch.length-1 ; j++){
+				String result = sr.replaceAll("[-+.^:,]","");
+				if(ch[j] !=  '.'){
+					s2 += ch[j];
+				}
+			}
+			if(gotPeriod){
+				s1 += "."; // append "." at the end
+				counter=0; // start of new line, hence counter would reinitalize
+				gotPeriod=false;
+			}
+			line = s2 + s1;
+			System.out.println(line);
+			sr = fileprocessor.poll();
+			}
+		}
 		catch(Exception FileNotFoundException){
-			System.out.println("FileNotFound");
+ 			System.out.println("FileNotFound");
 			System.exit(0);
 		}
-		//System.out.println(fp.poll());
+
 
 	}
 }
