@@ -1,6 +1,7 @@
 package wordPlay.driver;
 
 import wordPlay.util.FileProcessor;
+import wordPlay.util.Results;
 import wordPlay.handler.WordRotator;
 
 /**
@@ -19,7 +20,10 @@ public class Driver {
 			System.exit(0);
 		}
 		System.out.println("Hello World! Lets get started with the assignment");
-		WordRotator wordrotator = new WordRotator(args[0]);
+		WordRotator wordrotator = new WordRotator();
+		Results r = wordrotator.rotator(args[0]);
+		//r.writeToStdout();
+		r.writeToFile("output.txt");
 
 	}
 }
