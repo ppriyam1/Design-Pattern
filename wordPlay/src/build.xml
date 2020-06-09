@@ -46,9 +46,9 @@
 
 <target name="run" depends="jar">
         <java jar="${BUILD}/jar/wordPlay.jar"  fork="true">
-	<arg value="input.txt"/> <!-- input file -->
-	<arg value="${arg1}"/> <!-- output file -->
-        <arg value="${arg2}"/> <!-- metrics file -->
+	      <arg value="${input}"/> <!-- input file -->
+	      <arg value="${output}"/> <!-- output file -->
+        <arg value="${metrics}"/> <!-- metrics file -->
         </java>
     </target>
 

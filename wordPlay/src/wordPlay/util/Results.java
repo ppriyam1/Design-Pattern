@@ -10,51 +10,50 @@ import wordPlay.util.FileDisplayInterface;
 import wordPlay.util.StdoutDisplayInterface;
 import wordPlay.metrics.MetricsCalculator;
 
-/**
-* Method to .
-*/
 public class Results implements FileDisplayInterface, StdoutDisplayInterface {
 
 	ArrayList<String> arraylist = new ArrayList<String>();
 	MetricsCalculator metrics;
-	public boolean addToList(String value){
+	/**
+  * Method to add rotated words in an array List.
+  */
+	public void addToList(String value){
 		arraylist.add(value);
-		return true;
 	}
 	/**
-  * Method to .
+  * Method to print the output to the console.
   */
 	public void writeToStdout(){
+		System.out.println("--------- Output ---------");
 		for (int i = 0; i < arraylist.size(); i++){
-        System.out.print(arraylist.get(i) );
-    	}
+      System.out.print(arraylist.get(i));
+    }
 		metrics.writeToStdout();
-	  }
-		/**
-	  * Method to .
-	  */
-	public int writeToFile(String Doutput){
+	}
+	/**
+	* Method to write the output into a output file.
+	*/
+	public void writeToFile(String Doutput){
 		try {
 			BufferedWriter writer = new BufferedWriter(new FileWriter(Doutput));
 			for (int i = 0; i < arraylist.size(); i++) {
-	    	writer.write(arraylist.get(i));
+	     writer.write(arraylist.get(i));
 	    }
 			writer.close();
 			}
 			catch(Exception e){
-				System.err.println(e);
-				System.exit(0);
+			 System.err.println(e);
+			 System.exit(0);
 			}
-			return 0;
-		}
-		/**
-	  * Method to .
-	  */
+	}
+	/**
+	* Method to set the metrics instance variable.
+	*/
 	public void setMetrics( MetricsCalculator m){
 		metrics = m;
 	}
 	/**
-  * Method to .
+  * Method to send user input metric file to the metrics calculator class.
   */
 	public void writeMetricToFile(String Dmetric){
 		metrics.writeToFile(Dmetric);
